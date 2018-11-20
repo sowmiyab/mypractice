@@ -1,0 +1,34 @@
+extends layout
+block content
+
+ h2 Personal Details
+    .row(style='margin-left:500px')
+               if(errors)
+                  .row
+                        .col-sm-12#err.box.inner.alert-danger(style="border-radius:4px;background-color:white;")
+                           h5
+                              i.glyphicon.glyphicon-alert
+                              span &nbsp;&nbsp;There was a problem
+                           .col-sm-12(stlyle="margin-left:20px;")
+                             each error, i in errors
+                                 ul(style="color:black;")
+                                    li(style="font-size:15px;") #{error.msg}
+
+    .row
+       .col-sm-4.col-md-4.col-sm-offset-4.col-md-offset-4
+          center
+              form(method='POST' action='/details')
+                 #form-group
+                        label(for ='UName')  Username :
+                          input(type='text', name='UName',placeholder="Enter you Username")
+                 br
+                 #form-group
+                        label(for ='EMail')  Email :
+                          input(type='text',  name='EMail',placeholder="Enter you Email")
+                 br
+                 #form-group
+                        label(for ='PW')  Password:
+                          input(type='text', name='PW',placeholder="Enter you Password")
+                 br
+                 .row
+                   button.btn.btn-info(type='submit' value='submit') Submit

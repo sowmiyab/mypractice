@@ -1,0 +1,39 @@
+extends layout
+block content
+
+ style.
+   table {
+   font-family: arial, sans-serif;
+   border-collapse: collapse;
+   width: 100%;
+   }
+   td, th {
+   border: 1px solid #dddddd;
+   text-align: left;
+   padding: 8px;
+   }
+   tr:nth-child(even) {
+   background-color: #dddddd;
+   }
+
+ center
+      h2 Username: #{user.username}
+      table
+        thead
+          tr
+             th(style="text-align:center;") Username
+             th(style="text-align:center;") Email
+             th(style="text-align:center;") Password
+             th(style="text-align:center;") Action
+        tbody
+          each profile, i in details
+              tr
+                td(style="text-align:center;") #{profile.UName}
+                td(style="text-align:center;") #{profile.EMail}
+                td(style="text-align:center;") #{profile.PW}
+                td(style="text-align:center;")
+                     center
+                          a(href='/profile/edit/'+profile._id,style="color:orange;margin-left:15px;",title='Edit Item')
+                            button.btn.btn(style="background-color:green;color:white;") Edit
+                          a(href='/delete/'+profile._id,style="color:orange;margin-left:10px;",title='Delete Item')
+                            button.btn.btn(style="background-color:orange;color:white;") Delete
